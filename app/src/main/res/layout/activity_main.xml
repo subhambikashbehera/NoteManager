@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.subhambnikash.roompractice.viewmodel.ViewModelMainActivity" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/addPassword"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="15dp"
+            android:text="@{viewModel.headingName}" />
+
+        <EditText
+            android:text="@={viewModel.poetTittle}"
+            android:id="@+id/poetTittle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addPassword"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:autofillHints=""
+            android:background="@drawable/background"
+            android:ems="10"
+            android:hint="@string/enterPoetTitle"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:padding="8dp" />
+
+        <EditText
+            android:text="@={viewModel.poetDescription}"
+            android:id="@+id/poetDescription"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/poetTittle"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:autofillHints=""
+            android:background="@drawable/background"
+            android:ems="10"
+            android:gravity="start"
+            android:hint="@string/enterPoetDescription"
+            android:inputType="textMultiLine"
+            android:minHeight="48dp"
+            android:padding="8dp"
+            android:textColorHint="#757575" />
+
+        <LinearLayout
+            android:id="@+id/btnParent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_below="@+id/poetDescription"
+            >
+
+            <Button
+                android:text="@{viewModel.saveOrUpdateButtonText}"
+                android:id="@+id/addButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#428F89"
+                android:onClick="@{()->viewModel.saveOrUpdate()}"
+                />
+
+            <Button
+                android:text="@{viewModel.clearOrDeleteButtonText}"
+                android:layout_weight="1"
+                android:backgroundTint="#FF8B66"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/clearButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->viewModel.deleteOrDeleteAll()}"
+                />
+
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dataRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/btnParent"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="15dp" />
+
+
+
+
+    </RelativeLayout>
+</layout>

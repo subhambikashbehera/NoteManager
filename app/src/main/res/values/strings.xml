@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RoomPractice</string>
+    <string name="enterPoetDescription">enterPoetDescription</string>
+    <string name="enterPoetTitle">enterPoetTitle</string>
+</resources>
